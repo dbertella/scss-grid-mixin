@@ -24,3 +24,5 @@ You will just need the code below in your scss file to have 16 columns and offse
 ```
 @include generate-grid(16);
 ```
+
+Working example on [codepen] (http://codepen.io/dbertella/pen/qOJLBJ)
