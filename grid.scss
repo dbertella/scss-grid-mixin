@@ -1,13 +1,24 @@
-@mixin generate-grid($columns) {
-	@for $i from 1 through $columns {
-		$var: ".col-" + $i + "-" + $columns;
-		$width: calc(100% / ( #{$columns} / #{$i} ));
-		.col-#{$i}-#{$columns} {  
-      width: $width;  
+@mixin generate-grid($columns, $size: '') {
+  @for $i from 1 through $columns {
+    $width: calc(100% / ( #{$columns} / #{$i} ));
+    @if($size == '') {
+      .col-#{$i}-#{$columns} {
+        width: $width;
+      }
+      .col-offset-#{$i}-#{$columns} {
+        margin-left: $width;
+      }
     }
-    .col-offset-#{$i}-#{$columns} {  
-      margin-left: $width;  
+    @else {
+      .col-#{$size}-#{$i}-#{$columns} {
+        width: $width;
+      }
+      .col-#{$size}-offset-#{$i}-#{$columns} {
+        margin-left: $width;
+      }
     }
   }
 }
+
 @include generate-grid(16);
+@include generate-grid(12, 'md')
